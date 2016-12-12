@@ -3,6 +3,19 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    items: []
+  };
+
+  componentDidMount() {
+    this.setState({ items: [
+      "Buy new mouse and keyboard",
+      "Call ISP for better internet",
+      "???",
+      "PROFIT!"
+    ] });
+  }
+
   render() {
     return (
       <div className="App">
@@ -18,10 +31,7 @@ class App extends Component {
           </header>
 
           <ul id="todo-list">
-            <li>Buy new mouse and keyboard</li>
-            <li>Call ISP for better internet</li>
-            <li>???</li>
-            <li>PROFIT!</li>
+            { this.state.items.map(item => <li>{ item }</li>) }
           </ul>
 
           <footer>
