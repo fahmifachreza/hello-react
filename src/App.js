@@ -5,13 +5,15 @@ import './App.css';
 class App extends Component {
   state = {
     items: [],
-    newItemText: ""
+    newItemText: "",
+    filterText: ""
   };
 
   constructor (props) {
     super(props);
 
     this.addItem = this.addItem.bind(this);
+    this.updateFilter = this.updateFilter.bind(this);
     this.updateNewItemValue = this.updateNewItemValue.bind(this);
   }
 
@@ -34,11 +36,17 @@ class App extends Component {
     }
   }
 
+  updateFilter (event) {
+    this.setState({ filterText: event.target.value });
+  }
+
   updateNewItemValue (event) {
     this.setState({ newItemText: event.target.value });
   }
 
   render() {
+    const itemsShown = this.state.items.filter(item => item.includes(this.state.filterText));
+
     return (
       <div className="App">
         <div className="App-header">
@@ -49,11 +57,15 @@ class App extends Component {
         <content className="App-content">
           <header>
             <label htmlFor="filter">Filter Items: </label>
-            <input type="text" id="filter" placeholder="Filter..." />
+            <input type="text" 
+                   id="filter"
+                   placeholder="Filter..."
+                   value={this.state.filterText}
+                   onChange={this.updateFilter} />
           </header>
 
           <ul id="todo-list">
-            { this.state.items.map((item, index) => <li key={`item-${index}`}>{ item }</li>) }
+            { itemsShown.map((item, index) => <li key={`item-${index}`}>{ item }</li>) }
           </ul>
 
           <footer>
