@@ -14,11 +14,29 @@
   color: white;
 }
 
-.App-intro {
+.App-content {
   font-size: large;
 }
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+#new-item,
+#filter {
+  font-size: large;
+  margin: 15px auto;
+  padding: 4px;
+  width: 50vw;
+}
+
+#todo-list {
+  list-style: disc;
+  padding-left: 20vw;
+  margin: 15px auto;
+}
+
+#todo-list li {
+  text-align: left;
 }
