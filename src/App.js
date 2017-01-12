@@ -15,6 +15,7 @@ class App extends Component {
     this.addItem = this.addItem.bind(this);
     this.updateFilter = this.updateFilter.bind(this);
     this.updateNewItemValue = this.updateNewItemValue.bind(this);
+    this.sortItems = this.sortItems.bind(this);
   }
 
   componentDidMount() {
@@ -44,6 +45,12 @@ class App extends Component {
     this.setState({ newItemText: event.target.value });
   }
 
+  sortItems () {
+    this.setState({
+      items: this.state.items.sort()
+    })
+  }
+
   render() {
     const itemsShown = this.state.items.filter(item => item.includes(this.state.filterText));
 
@@ -62,6 +69,11 @@ class App extends Component {
                    placeholder="Filter..."
                    value={this.state.filterText}
                    onChange={this.updateFilter} />
+            <input
+              type="button"
+              value="Sort!"
+              style={{border: '1px solid #666', padding: '5px', marginLeft: '10px'}}
+              onClick={this.sortItems} />
           </header>
 
           <ul id="todo-list">
