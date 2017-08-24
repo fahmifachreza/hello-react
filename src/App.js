@@ -52,7 +52,7 @@ class App extends Component {
   }
 
   render() {
-    const itemsShown = this.state.items.filter(item => item.includes(this.state.filterText));
+    const itemsShown = this.state.items;
 
     return (
       <div className="App">
